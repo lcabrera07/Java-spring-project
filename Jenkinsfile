@@ -1,26 +1,28 @@
 pipeline {
 	agent any
 	tools {
-    	maven 'my_mvn'
+    	maven 'local-mvn'
 	}
 	stages {
-    	stage("Checkout") {
-        	steps {
-            	git branch: 'main',  url: 'https://github.com/lcabrera07/Java-spring-project'
-           	 
+    	stage("Checkout") {   
+        	steps {               	 
+            	git branch: 'main',  url: 'https://github.com/lcabrera07/Java-spring-project'         	 
         	}    
     	}
     	stage('Build') {
         	steps {
-        	sh "mvn compile"
+        	sh "mvn compile"  	 
         	}
     	}
-   	 
-    	stage("Unit test") {
-        	steps {
-            	sh "mvn test"
-			}
-		}
-	}
+    	stage("Unit test") {          	 
+        	steps {  	 
+            	sh "mvn test"          	 
+       	    }
+        }
+    	stage("Package") {          	 
+        	steps {  	 
+            	sh "mvn package"          	 
+       	    }
+        }
+    }
 }
-
