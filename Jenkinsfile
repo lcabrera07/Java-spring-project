@@ -6,7 +6,7 @@ pipeline {
 	stages {
     	stage("Checkout") {
         	steps {
-            	git url: 'https://github.com/lcabrera07/Java-spring-project'
+            	git branch: 'main',  url: 'https://github.com/lcabrera07/Java-spring-project'
            	 
         	}    
     	}
